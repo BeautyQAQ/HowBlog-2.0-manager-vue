@@ -4,9 +4,8 @@
       <mavon-editor ref="editor" v-model="doc" style="height: 650px" />
     </div>
     <br>
-    <el-row>
-      <el-col :span="12">
-        标签：
+    <el-form ref="form" label-width="80px">
+      <el-form-item label="作者">
         <el-select v-model="value" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -15,9 +14,8 @@
             :value="item.value"
           ></el-option>
         </el-select>
-      </el-col>
-      <el-col :span="12">
-        分类：
+      </el-form-item>
+      <el-form-item label="标签">
         <el-select v-model="value" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -26,19 +24,24 @@
             :value="item.value"
           ></el-option>
         </el-select>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="24">
-        标题：
+      </el-form-item>
+      <el-form-item label="分类">
+        <el-select v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="标题">
         <el-input v-model="input" placeholder="请输入标题"></el-input>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="6" :offset="21">
+      </el-form-item>
+      <el-form-item>
         <el-button type="primary">发布文章</el-button>
-      </el-col>
-    </el-row>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -80,14 +83,3 @@ export default {
   }
 };
 </script>
-<style>
-.el-row {
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-.el-col {
-  border-radius: 4px;
-}
-</style>
