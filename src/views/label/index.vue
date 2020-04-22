@@ -1,11 +1,14 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" label-width="80px">
+    <el-form :inline="true" ref="form" label-width="100px">
       <el-form-item label="标签">
         <el-input v-model="input"></el-input>
       </el-form-item>
       <el-form-item label="详情">
         <el-input v-model="input"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">添加标签</el-button>
       </el-form-item>
     </el-form>
     <br>
