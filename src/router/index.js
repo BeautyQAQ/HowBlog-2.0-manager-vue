@@ -64,13 +64,13 @@ export const constantRoutes = [
       {
         path: 'admin',
         name: 'ArticleAdmin',
-        component: () => import('@/views/article/articleAdmin'),
+        component: () => import('@/views/article/ArticleAdmin'),
         meta: { title: '查看文章', icon: 'articleAdmin' }
       },
       {
         path: 'release',
         name: 'ArticleRelease',
-        component: () => import('@/views/article/articleRelease'),
+        component: () => import('@/views/article/ArticleRelease'),
         meta: { title: '发布文章', icon: 'articleRelease' }
       }
     ]

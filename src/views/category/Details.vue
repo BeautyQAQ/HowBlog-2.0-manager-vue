@@ -53,7 +53,7 @@
             <el-button
             size="mini"
             type="info"
-            @click="$router.push(`/category/Details/标签`)">查看</el-button>
+            @click="$router.push('/category/Details')">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
