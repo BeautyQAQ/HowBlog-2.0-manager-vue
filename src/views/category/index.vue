@@ -1,11 +1,23 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" ref="form" label-width="100px">
+    <el-form :inline="true" ref="form" label-width="50px">
       <el-form-item label="分类">
-        <el-input v-model="input"></el-input>
+        <el-input
+          type="text"
+          placeholder="请输入内容"
+          v-model="text"
+          maxlength="10"
+          show-word-limit
+        ></el-input>
       </el-form-item>
       <el-form-item label="详情">
-        <el-input v-model="input"></el-input>
+        <el-input
+          type="textarea"
+          placeholder="请输入内容"
+          v-model="textarea"
+          maxlength="30"
+          show-word-limit
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary">添加分类</el-button>
@@ -45,18 +57,42 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            @click="dialogFormVisible = true">编辑</el-button>
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            @click="open(scope.$index, scope.row)">删除</el-button>
             <el-button
             size="mini"
-            type="info"
-            @click="$router.push(`/category/Details/标签`)">查看</el-button>
+            type="info"><router‐link to="/category/details">查看</router‐link></el-button>
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog title="编辑标签" :visible.sync="dialogFormVisible">
+      <el-form ref="form" label-width="50px">
+        <el-form-item label="分类">
+          <el-input
+            type="text"
+            placeholder="请输入内容"
+            v-model="text"
+            maxlength="10"
+            show-word-limit
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="详情">
+          <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="30"
+            show-word-limit
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary">更新分类</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -77,7 +113,8 @@ export default {
   data() {
     return {
       list: null,
-      listLoading: true
+      listLoading: true,
+      dialogFormVisible: false
     }
   },
   created() {
@@ -90,9 +127,24 @@ export default {
         this.list = response.data.items
         this.listLoading = false
       })
-    }
+    },
+    open() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      }
   }
 }
 </script>
-
-

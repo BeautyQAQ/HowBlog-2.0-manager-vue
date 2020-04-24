@@ -123,6 +123,12 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: 'category/details/:id',
+    name: 'Details',
+    component: () => import('@/views/category/Details')
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
