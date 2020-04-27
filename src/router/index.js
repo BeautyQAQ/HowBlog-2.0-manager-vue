@@ -124,9 +124,15 @@ export const constantRoutes = [
   },
 
   {
-    path: 'category/details/:id',
+    path: '/category/details',
     name: 'Details',
     component: () => import('@/views/category/Details')
+  },
+
+  {
+    path: '/label/details',
+    name: 'Details',
+    component: () => import('@/views/label/Details')
   },
 
   // 404 page must be placed at the end !!!

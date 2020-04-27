@@ -64,11 +64,12 @@
             @click="open(scope.$index, scope.row)">删除</el-button>
             <el-button
             size="mini"
-            type="info"><router‐link to="/category/details">查看</router‐link></el-button>
+            type="info"
+            @click="$router.push('/category/details')">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="编辑标签" :visible.sync="dialogFormVisible">
+    <el-dialog title="编辑分类" :visible.sync="dialogFormVisible">
       <el-form ref="form" label-width="50px">
         <el-form-item label="分类">
           <el-input
@@ -114,7 +115,9 @@ export default {
     return {
       list: null,
       listLoading: true,
-      dialogFormVisible: false
+      dialogFormVisible: false,
+      text: "",
+      textarea: ""
     }
   },
   created() {
@@ -129,22 +132,22 @@ export default {
       })
     },
     open() {
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });          
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
         });
-      }
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });          
+      });
+    }
   }
 }
 </script>
