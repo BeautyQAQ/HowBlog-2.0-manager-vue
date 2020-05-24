@@ -64,7 +64,7 @@
             @click="open(scope.$index, scope.row)">删除</el-button>
             <el-button
             size="mini"
-            type="info"><router‐link to="/category/details">查看</router‐link></el-button>
+            type="info">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
